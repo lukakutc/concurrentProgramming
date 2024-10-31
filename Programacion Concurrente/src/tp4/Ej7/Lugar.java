@@ -6,8 +6,10 @@ public class Lugar {
     //Recurso compartido
     private Semaphore asiento = new Semaphore(1);
     private Semaphore pedido = new Semaphore(0);
+    private Semaphore comida = new Semaphore(0);
     public Lugar(){}
 
+    //e se sienta-> e pide -> m recibe pedido -> m cocina -> m entrega y espera -> e come -> e se va
     public void sentarse(){
         try {
             asiento.acquire();
@@ -15,8 +17,13 @@ public class Lugar {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println("El empleado se ha sentado en el asiento y pide");
+        System.out.println("El empleado se ha sentado en el asiento");
+    }
+
+    public void pedir(){
+        System.out.println("El empleado pide");
         pedido.release();
+
     }
     public void irse (){
         
@@ -38,6 +45,8 @@ public class Lugar {
     public void entregarPedido(){
         System.out.println("mozo entrega pedido a empleado");
         pedido.release();
+
+        
     }
 
 }

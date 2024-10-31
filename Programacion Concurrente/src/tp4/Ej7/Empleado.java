@@ -10,7 +10,6 @@ public class Empleado implements Runnable {
     public void run(){
         l.sentarse();
         l.pedir();
-        comer();
         l.irse();
     }
 
