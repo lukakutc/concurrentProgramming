@@ -1,0 +1,11 @@
+el tren tiene n capacidad. 
+Los pasajeros tienen que comprar un boleto para entrar
+
+
+pasajero pedirTicket -> vendedor recigirPedido -> vendedor entregarTicket -> pasajero recibirTicket
+es tipo rendevouz 
+
+una vez que pasajero tiene ticket:
+entra al tren (adquirir semaforo lugar)
+
+una vez que el tren se lleno

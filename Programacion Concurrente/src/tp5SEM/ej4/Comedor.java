@@ -1,4 +1,4 @@
-package tp5SEM.ej3;
+package tp5SEM.ej4;
 
 import java.util.concurrent.Semaphore;
 
@@ -11,23 +11,25 @@ public class Comedor {
     private Semaphore semGatos;
     private Semaphore semPerros;
     private Semaphore comedero;
+    private int cantAnimalesPorTurno;
 
-    public Comedor() {
+    public Comedor(int cantComederos,int cantAnimalesPorTurno) {
         comieron = -1;
         semGatos = new Semaphore(0);
         semPerros = new Semaphore(0);
-        comedero = new Semaphore(10);
+        comedero = new Semaphore(cantComederos);
+        this.cantAnimalesPorTurno = cantAnimalesPorTurno;
     }
 
     public void comer(Animal animal) {
         if (comieron == -1) { // Si todavia nadie comió
             if (animal.getTipo().equals("Gato")) {
                 comieron = 0;
-                semGatos.release(15);
+                semGatos.release(cantAnimalesPorTurno);
                 tipoActual = "Gato";
             } else {
                 comieron = 0;
-                semPerros.release(15);
+                semPerros.release(cantAnimalesPorTurno);
                 tipoActual = "Perro";
             }
         }
@@ -44,23 +46,23 @@ public class Comedor {
         }else{
             try {
                 semPerros.acquire();
-                comedero.acquire();
+                comedero.acquire(2);
                 System.out.println("Perro "+animal.getNumero()+" comiendo! guau guau");
                 Thread.sleep((int) (Math.random() * 500));
                 comieron++;
-                comedero.release();
+                comedero.release(2);
             } catch (InterruptedException e) {
             }
         }
-        if(comieron==15){
+        if(comieron==cantAnimalesPorTurno){
             comieron=0;
             if(tipoActual.equals("Gato")){
                 
-                semPerros.release(15);
+                semPerros.release(cantAnimalesPorTurno);
                 tipoActual = "Perro";
             }else{
                 
-                semGatos.release(15);
+                semGatos.release(cantAnimalesPorTurno);
                 tipoActual = "Gato";
             }
         }
