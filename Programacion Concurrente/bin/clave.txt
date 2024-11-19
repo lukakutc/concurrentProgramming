@@ -1,0 +1,5 @@
+No es lo mismo usar semaforo para mutex que para sincronizar
+son dos cosas diferentes y en un ejercicio tenemos que hacer 
+las dos 
+
+Tryhardeemos semaforos entonces

@@ -1,0 +1,16 @@
+Se utilizan locks de igual forma que semaforos binarios para mutex. asi que eso numero 1 a tener en cuenta.
+
+Monitores:
+el objeto monitor tiene un lock implicito y mediante wait y notify logra la sincronizacion cooperativa de los hilos que lo  utilicen.
+el wait, introduce al hilo que lo ejecuta en la lista de espera del monitor, y solo podrá salir de ahi si un notify hace efecto sobre el. 
+el notify es decir che, se produjo un cambio, verifica que se cumpla lo que necesitas. entonces, si se cumple haces lo que tenes que hacer, y sino se cumple se
+deberia ejecutar otro wait.
+todos los metodos del monitor se usan con syncrhonized por lo tanto, solo un hilo puede estar ejecutando un metodo por ves. no hay mas de un hilo ejecutando el mismo metodo
+ni dos diferentes.
+//por lo tanto pensando es como que, todos los hilos se van durmiendo de a uno si no hacen lo que tienen que hacer
+//haaasta que se ejecuta el hilo que "produce cambios" y notifica a los demas que uno(o todos si se hace notifyAll) pueden VERIFICAR si deben continuar con la ejecucion
+
+funcionamiento paso a paso:
+un hilo se da cuenta que no esta listo para continuar su ejecución entonces ejecuta wait.
+al ejecutar wait libera el lock y pasa a lista de espera!
+cuando se despierta al hilo con un notify (que tiene que justo haberle tocado a el xq el notify notifica a uno random de la lista de espera) sigue

@@ -1,0 +1,17 @@
+4 banqutos ( semaforo generico de 4)
+Cada pequeño se cansa de jugar y se sienta en banco
+    (semBanco acquire)
+    pide comida a su hermano mayor (semaforo para pedir comida)
+                                    (semaforo para comida lista)
+    es decir, segun el enunciado, el hermano le prepara la comida
+    a uno por vez.
+
+El hermano mayor, cuando no prepara comida dibuja
+Esto requiere de un semaforo?
+
+
+Esta muy bien esto.
+si modularizamos mas, podemos pasar por parametro
+El nombre del animalito y que el mayor diga cociniando para
+animalito
+faltaria resolver tambien el tema de si dibuja o que mierrrda
