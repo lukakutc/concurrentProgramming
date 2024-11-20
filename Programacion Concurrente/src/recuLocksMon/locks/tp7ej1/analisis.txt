@@ -7,3 +7,4 @@ para jubilados:
 
 capacidad: si es <= tUmbral bajamos capacidad a capacidad reducida.
 
+Preguntar. que va, signal o signal all?

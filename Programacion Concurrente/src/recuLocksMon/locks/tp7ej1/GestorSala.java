@@ -6,8 +6,9 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class GestorSala {
     // Recurso compartido
-    Lock lock = new ReentrantLock(true);
+    Lock lock = new ReentrantLock();
     Condition puedeEntrar = lock.newCondition();
+    Condition puedeEntrarJubilado = lock.newCondition();
     private int temperatura;
     private int tUmbral;
     private int capacidad;
@@ -31,8 +32,8 @@ public class GestorSala {
                 System.out.println(nombre + " debe esperar para entrar");
                 puedeEntrar.await();
             }
-            System.out.println(nombre + " entra a la sala");
             dentro++;
+            System.out.println(nombre + " entra a la sala");
         } catch (Exception e) {
             // TODO: handle exception
         } finally {
@@ -46,7 +47,7 @@ public class GestorSala {
         try {
             System.out.println(nombre + " sale de sala");
             dentro--;
-            puedeEntrar.signalAll();
+            puedeEntrar.signal();
         } catch (Exception e) {
             // TODO: handle exception
         } finally {
@@ -55,7 +56,7 @@ public class GestorSala {
 
     }
 
-    public void entraSalaJubilado(String nombre) {
+    public void entrarSalaJubilado(String nombre) {
         lock.lock();
         jubiladosEsperando++; // Mientras espera hay jubilados esperando
         try {
@@ -66,8 +67,9 @@ public class GestorSala {
 
             }
             jubiladosEsperando--;
-            System.out.println(nombre + " entra a la sala");
+            puedeEntrar.signalAll();//Como hay un jubilado menos en espera signal
             dentro++;
+            System.out.println(nombre + " entra a la sala");
         } catch (Exception e) {
             // TODO: handle exception
         } finally {

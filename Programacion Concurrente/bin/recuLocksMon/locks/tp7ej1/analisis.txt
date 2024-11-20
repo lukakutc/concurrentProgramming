@@ -1,0 +1,10 @@
+que condiciones veo identificadas:
+para personas normales: 
+    que haya lugar y que no haya un jubilado esperando
+    Condition hayLugar y Condition jubiladosEsperando==0
+para jubilados:
+    que haya lugar
+
+capacidad: si es <= tUmbral bajamos capacidad a capacidad reducida.
+
+Preguntar. que va, signal o signal all?
