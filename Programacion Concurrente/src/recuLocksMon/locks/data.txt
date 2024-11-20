@@ -1,0 +1,14 @@
+es como usar metodos sincronizados pero el lock es explicito es decir:
+al prinicipio del metodo lock.lock 
+al final del metodo lock.unlock
+a cada lock se le asocian una o mas condiciones
+de la siguiente forma.
+
+Lock lock = new ReentrantLock(true);
+Condition estaVacio = lock.newCondition()
+Condition estaLleno = lock.newCondition()
+
+Entonces, nosotros para monitores tenemos una cola de espera para todos los hilos bloqeuados, y ahora 
+tenemos una cola de espero por cada condicion ;)
+esto es clave! porque podemos bloquear a hilos que hagan diferentes cosas por diferentes motivos, y solo darle las señalles a ellos.
+estaVacio.signal o estaVacio.signalAll

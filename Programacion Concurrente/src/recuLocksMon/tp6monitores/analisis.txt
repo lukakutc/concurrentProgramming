@@ -1,0 +1,10 @@
+Entran y salen solo coches desde el sur o norte.
+Entonces debo tener un turno
+despues tienen que poder de a 10. entonces cuando ya paso el decimo
+tengo que hacer un notify o algo asi.
+
+resumen:
+turno sur:
+    pasan 10,
+    cuando pasa el decimo cambio el turno y notifico
+    a los que querian pasar pero no era su turno.
