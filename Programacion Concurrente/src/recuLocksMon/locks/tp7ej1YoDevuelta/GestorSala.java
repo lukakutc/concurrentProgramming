@@ -46,9 +46,9 @@ public class GestorSala {
             lock.lock();
             System.out.println(nombre + " sale de la sala");
             dentroSala--;
-            puedeEntrarJubilado.signalAll();
-            puedeEntrar.signalAll();
             
+            puedeEntrar.signalAll();
+            puedeEntrarJubilado.signalAll();
         } catch (Exception e) {
             // TODO: handle exception
         } finally {
@@ -82,9 +82,9 @@ public class GestorSala {
             lock.lock();
             System.out.println("El jubilado " + nombre + " sale de la sala");
             dentroSala--;
-            puedeEntrarJubilado.signalAll();
-            puedeEntrar.signalAll();
             
+            puedeEntrar.signalAll();
+            puedeEntrarJubilado.signalAll();
         } catch (Exception e) {
             // TODO: handle exception
         } finally {
