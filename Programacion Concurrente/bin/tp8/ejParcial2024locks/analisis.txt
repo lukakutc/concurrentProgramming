@@ -1,0 +1,27 @@
+lo mas dificil:
+la escuela entra como grupo.
+entonces en el metodo entrarEscolar tenemos que pasar la cantidad de alumnos y verificar eso en la condicion. hasta ahi bien.
+ahora, como hacemos para que salgan juntos??? ossssssssssssss, ya se. SignalAll en salida!!!
+
+entrarEscuela(int cantAlumnos){
+    escolaresEsperando++;//Esto para que los no residentes y residentes verifiquen
+    if(escolaresEsperando == cantAlumnos){
+        entra grupo escolar
+    }
+    while(dentro+cantAlumnos){
+        entraEscolar.await
+    }   
+    dentro++;
+    escolaresDentro++;
+    escolaresEsperando--;
+}
+
+salirEscuela(int cantAlumnos){
+    while(escolaresDentro<cantAlumnos){
+        sout     debe esperar para salir
+        saleEscuela.await
+    }
+    dentro--;
+    escolaresDentro--;
+
+}
