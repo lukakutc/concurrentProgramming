@@ -16,7 +16,7 @@ public class Parque {
     private int capacidadReducidad;
     private int capacidadActual;
     private int residentesEsperando;
-    private int escolarEsperando;
+    private int escuelaEsperando;
     private int ninosDentro;
     private boolean ninosSaliendo;
 
@@ -26,7 +26,7 @@ public class Parque {
         dentro = 0;
         capacidadActual = capacidadNormal;
         residentesEsperando = 0;
-        escolarEsperando = 0;
+        escuelaEsperando = 0;
         ninosDentro = 0;
         ninosSaliendo = false;
     }
@@ -34,22 +34,13 @@ public class Parque {
     public void entraEscolar(int cantAlumnos, String nombre) {
         try {
             lock.lock();
-            escolarEsperando++;
             while (dentro + cantAlumnos >= capacidadActual) {
                 System.out.println(nombre + " debe esperar para entrar");
                 entraEscuela.await();
             }
-            if (ninosDentro == 0) {
-                System.out.println(
-                        "Entra grupo escolar. Cambia capacidad de " + capacidadActual + " a " + capacidadReducidad);
-                capacidadActual = capacidadReducidad;
-                entraEscuela.signalAll();
-            }
             ninosDentro++;
             dentro++;
-            escolarEsperando--;
             System.out.println(nombre + " entro al parque");
-
         } catch (Exception e) {
             // TODO: handle exception
         } finally {

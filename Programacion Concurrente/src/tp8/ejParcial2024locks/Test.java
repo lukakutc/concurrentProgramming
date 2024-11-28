@@ -21,6 +21,5 @@ public class Test {
             hilosEscuela[i] = new Thread(new Escolar(p,"escolar"+i,8));
             hilosEscuela[i].start();
         }
-        
     }
 }

@@ -25,3 +25,5 @@ salirEscuela(int cantAlumnos){
     escolaresDentro--;
 
 }
+
+el problema esta que si despues con el if verificamos si hay ninos esperando
