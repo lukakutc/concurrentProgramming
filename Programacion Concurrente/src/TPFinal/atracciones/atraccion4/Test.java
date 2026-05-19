@@ -8,11 +8,13 @@ public class Test {
     public static void main(String[] args) {
 
 
-        ScheduledExecutorService temporizador = Executors.newSingleThreadScheduledExecutor();
-        
-        System.out.println("Esperando los 5 segundos");
-        temporizador.schedule(new HiloTest(), 5, TimeUnit.SECONDS);
-        temporizador.shutdown();
-        System.out.println("despues o antes de los 5 segundos?");
+        System.out.println("Probando, muy probablemente se rmopa todo");
+        ControlTren ct = new ControlTren(10);
+        int i;
+
+        new Thread(new Tren(ct)).start();
+        for(i=0;i<50;i++){
+            new Thread(new Visitante(ct)).start();
+        }
     }
 }

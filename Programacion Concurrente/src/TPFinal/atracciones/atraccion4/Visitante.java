@@ -10,6 +10,14 @@ public class Visitante implements Runnable {
 
     public void run(){
         c.esperarTren(this);
+        c.subirTren(this);
+        try {
+            Thread.sleep(2500);
+            c.terminarSubir();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     public String getNombre(){

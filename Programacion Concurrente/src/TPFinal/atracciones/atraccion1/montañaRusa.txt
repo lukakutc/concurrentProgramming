@@ -1,0 +1,12 @@
+La montaña rusa tiene capacidad para 5 personas y requiere que todos los 
+asientos estén ocupados para iniciar. Los visitantes deben esperar hasta que 
+el viaje anterior haya finalizado para poder subir. Para este juego, existe un 
+espacio de espera para subir a la montaña rusa, si ese espacio de espera 
+está lleno, el visitante se va a otro lado. Por utilizar esta atracción el visitante 
+recibe MR fichas. 
+
+yo esto lo veo como una barrera ciclica de 5 threads, y luego un arreglo de 10 personas para esperar. puede ser una cola bloqueante.
+pseudo:
+
+esperarMontania()
+   
